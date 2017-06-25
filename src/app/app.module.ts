@@ -1,20 +1,36 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
-import { AppComponent }  from './app.component';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './components/about/about.component';
-import { SearchComponent } from './components/search/search.component';
-
-const routes: Routes = [
-    { path: '', component: SearchComponent },
-    { path: 'about', component: AboutComponent }
-]
+import { ArtistComponent } from './components/artist/artist.component';
+import { AlbumComponent } from './components/album/album.component';
+import { appRoutes } from './routes';
+import { SpotifyService } from './services/spotify.service';
 
 @NgModule({
-  imports:      [ BrowserModule, RouterModule.forRoot(routes) ],
-  declarations: [ AppComponent, AboutComponent,NavbarComponent,SearchComponent ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
+  ],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    NavbarComponent,
+    AboutComponent,
+    ArtistComponent,
+    AlbumComponent
+  ],
+  providers: [
+    SpotifyService
+  ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
